@@ -1,0 +1,61 @@
+# ==============================================================================
+# Apache NetBeans Java Project .gitignore
+# Project: InternetBillingManagementSystem
+# ==============================================================================
+
+# Compiled Class files
+*.class
+
+# Build and Distribution directories
+build/
+/build/
+dist/
+/dist/
+nbbuild/
+/nbbuild/
+nbdist/
+/nbdist/
+.nb-gradle/
+
+# NetBeans user-specific and private configurations
+**/nbproject/private/
+nbproject/private/
+**/nbproject/Makefile-*.mk
+**/nbproject/Package-*.bash
+
+# IDE configuration and temporary files
+.vscode/
+.idea/
+*.iml
+*.iws
+*.ipr
+.settings/
+.project
+.classpath
+
+# Local Database runtime / embedded DB files
+*.db
+*.mv.db
+*.trace.db
+*.sqlite
+*.sqlite3
+
+# Local credentials and configuration files containing sensitive data
+db.properties
+*.properties.local
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.pfx
+*.p12
+
+# Nested / accidental git repository clone folder at root
+/internetbilling/
+
+# Operating System temporary and metadata files
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.log

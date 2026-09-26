@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="InternetBillingManagementSystem" default="default" basedir=".">
+    <description>Builds, tests, and runs the project InternetBillingManagementSystem.</description>
+    
+    <!-- Property definitions -->
+    <property file="nbproject/project.properties"/>
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+    <property name="build.classes.dir" value="${build.dir}/classes"/>
+    <property name="dist.dir" value="dist"/>
+    <property name="dist.jar" value="${dist.dir}/InternetBillingManagementSystem.jar"/>
+    <property name="lib.dir" value="lib"/>
+    <property name="main.class" value="internetbilling.Main"/>
+
+    <path id="project.classpath">
+        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+    </path>
+
+    <target name="init">
+        <mkdir dir="${build.classes.dir}"/>
+        <mkdir dir="${dist.dir}"/>
+    </target>
+
+    <target name="compile" depends="init" description="Compiles the Java source code">
+        <javac srcdir="${src.dir}" destdir="${build.classes.dir}" classpathref="project.classpath" includeantruntime="false" debug="true">
+            <compilerarg value="-Xlint:-options"/>
+        </javac>
+        <copy todir="${build.classes.dir}">
+            <fileset dir="${src.dir}" excludes="**/*.java"/>
+        </copy>
+    </target>
+
+    <target name="jar" depends="compile" description="Builds the distribution JAR">
+        <mkdir dir="${dist.dir}/lib"/>
+        <copy todir="${dist.dir}/lib">
+            <fileset dir="${lib.dir}" includes="**/*.jar"/>
+        </copy>
+        <jar destfile="${dist.jar}" basedir="${build.classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main.class}"/>
+                <attribute name="Class-Path" value="lib/mssql-jdbc-12.6.1.jre11.jar"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run" depends="compile" description="Runs the application">
+        <java classname="${main.class}" fork="true">
+            <classpath>
+                <pathelement path="${build.classes.dir}"/>
+                <path refid="project.classpath"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="clean" description="Deletes build and dist directories">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+    <target name="default" depends="compile,jar"/>
+</project>

@@ -1,0 +1,23 @@
+# ==============================================================================
+# Database Configuration Template for Internet Billing Management System
+# ==============================================================================
+# Instructions:
+# 1. Copy this file and name it 'db.properties' in this directory.
+# 2. Update the credentials below to match your local MySQL configuration.
+# 3. Do NOT commit your local 'db.properties' file (it is in .gitignore).
+# ==============================================================================
+
+# Database Engine: MYSQL (default), MSSQL, or EMBEDDED
+db.engine=MYSQL
+
+# Connection parameters
+db.host=localhost
+db.port=3306
+db.name=InternetBillingDB
+db.user=root
+db.password=YOUR_MYSQL_PASSWORD
+
+# Security & Connection Settings
+db.trustServerCertificate=true
+db.encrypt=false
+db.integratedSecurity=false
